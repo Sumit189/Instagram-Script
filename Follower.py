@@ -22,7 +22,7 @@ def get_credential(uname_,pass_,tags_):
     from tkinter import messagebox
     tags_=str(tags_)
     new_hastag_list=[]
-    hashtag_list = tags_.replace(' ','').split(',')
+    hashtag_list = tags_.replace(',',' ').split()
     for list_items in hashtag_list:
         if list_items[0]=='#':
             new_hastag_list.append(list_items[1:])
@@ -36,6 +36,7 @@ def get_credential(uname_,pass_,tags_):
             if list_items[x]=="#":
                 messagebox.showerror("Tags Error", "Invalid Tags are provided")
                 all_ok=1
+                break
     if all_ok==0:        
         webdriver = webdriver.Chrome(executable_path=chromedriver_path)
         sleep(2)
