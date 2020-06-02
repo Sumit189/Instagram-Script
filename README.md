@@ -1,3 +1,7 @@
 # Instagram-Script
-Like Pictures, Comment and Follow the users that appear on the hashtags using Follower.py
-Unfollow all the users followed using the script with Unfollower.py
+Like Pictures, Comment and Follow the users that appear on the hashtags list with the help of INSTA.py
+
+The project is made with Tkinter for GUI.
+
+#Privacy 
+All of the user information stays in the system itself.  
