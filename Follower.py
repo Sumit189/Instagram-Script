@@ -52,7 +52,7 @@ def get_credential(uname_,pass_,tags_,tfollow_,tkWindow):
             username.send_keys(str(uname_))
             password = webdriver.find_element_by_name('password')
             password.send_keys(str(pass_))
-            button_login = webdriver.find_element_by_css_selector('#react-root > section > main > div > article > div > div:nth-child(1) > div > form > div:nth-child(4) > button')
+            button_login = webdriver.find_element_by_xpath('//button[normalize-space()="Log In"]')
             button_login.click()
             print("Logged in Successfully")
         except:
@@ -98,7 +98,7 @@ def get_credential(uname_,pass_,tags_,tfollow_,tkWindow):
             sleep(randint(1,2))    
             while x<total_acc_to_follow+1:    
                 print(x)
-                webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/header/div[2]/div[1]/div[2]/button').text
+                what_=webdriver.find_element_by_xpath('//button[normalize-space()="Follow"]').text
                 num_arr.append(x)
                 if x>1:
                     if num_arr[-1]==num_arr[-2]:
@@ -108,18 +108,18 @@ def get_credential(uname_,pass_,tags_,tfollow_,tkWindow):
                     count_num_array=0
                     sleep(randint(1,8)) 
                 try:
-                    username = webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/header/div[2]/div[1]/div[1]/div/a').text
+                    username = webdriver.find_element_by_xpath("//div[@class='e1e1d']").text
                     if (username not in prev_user_list) or (len(prev_user_list)==0) :
-                        if webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/header/div[2]/div[1]/div[2]/button').text == 'Follow':
+                        if webdriver.find_element_by_xpath("//*[text()='Follow']").text == "Follow":
                             prev_user_list.append(username)
                             x+=1
-                            webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/header/div[2]/div[1]/div[2]/button').click()
+                            webdriver.find_element_by_xpath("/html/body/div[5]/div[2]/div/article/header/div[2]/div[1]/div[2]/button").click()
                             print("Followed")
                             file1 = open(filename, append_write) # append mode 
                             file1.write(username+"\n") 
                             file1.close() 
                             followed += 1
-                            button_like = webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/div[2]/section[1]/span[1]/button')
+                            button_like = webdriver.find_element_by_xpath("/html/body/div[5]/div[2]/div/article/div[3]/section[1]/span[1]/button")
                             button_like.click()
                             print("Liked the picture.")
                             likes += 1
@@ -132,8 +132,8 @@ def get_credential(uname_,pass_,tags_,tfollow_,tkWindow):
                                 if comm_prob > 7:
                                     print("Given a comment.")
                                     comments += 1
-                                    webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/div[2]/section[1]/span[2]/button').click()
-                                    comment_box = webdriver.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/div[2]/section[3]/div/form/textarea')
+                                    webdriver.find_element_by_xpath('/html/body/div[5]/div[2]/div/article/div[3]/section[1]/span[2]/button').click()
+                                    comment_box = webdriver.find_element_by_xpath('/html/body/div[5]/div[2]/div/article/div[3]/section[3]/div/form/textarea')
                                     if (comm_prob < 7):
                                         comment_box.send_keys('Really cool!')
                                         sleep(1)
